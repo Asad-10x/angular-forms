@@ -1,0 +1,125 @@
+body {
+    background-color: #3b4664;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+
+.container {
+    background-color: #242d44;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    text-align: center;
+}
+
+.theme-toggle {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.theme-toggle span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.theme-toggle input[type="radio"] {
+    display: none;
+}
+
+.theme-toggle label {
+    background-color: #242d44;
+    padding: 5px 10px;
+    border-radius: 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle input[type="radio"]:checked + label {
+    background-color: #d03f2f;
+}
+
+.display {
+    background-color: #181f33;
+    color: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 2rem;
+    text-align: right;
+}
+
+.display input {
+    background: none;
+    border: none;
+    color: inherit;
+    width: 100%;
+    text-align: right;
+    font-size: 2rem;
+    outline: none;
+    padding: 0;
+    height: 40px;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+button {
+    background-color: #eae3dc;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d2cccc;
+}
+
+button:active {
+    background-color: #c1bfb6;
+}
+
+button.del {
+    background-color: #647198;
+    color: #fff;
+}
+
+button.reset {
+    background-color: #647198;
+    color: #fff;
+    grid-column: span 2;
+}
+
+button.equal {
+    background-color: #d03f2f;
+    color: #fff;
+    grid-column: span 2;
+}
+
+button.equal:hover {
+    background-color: #f96b5b;
+}
+
+button.reset:hover {
+    background-color: #8892b0;
+}
+
+button.del:hover {
+    background-color: #8892b0;
+}
