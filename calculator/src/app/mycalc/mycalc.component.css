@@ -9,12 +9,25 @@ body {
 }
 
 .container {
-    background-color: #242d44;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     width: 350px;
     text-align: center;
+}
+
+.container.default {
+    background-color: #242d44;
+}
+
+.container.light {
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.container.dark {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
 }
 
 .theme-toggle {
@@ -25,9 +38,18 @@ body {
     color: #fff;
 }
 
+.theme-toggle.light {
+    color: #000;
+}
+
+.theme-toggle.dark {
+    color: #f0f0f0;
+}
+
 .theme-toggle span {
     font-size: 0.9rem;
     font-weight: bold;
+    color: #d03f2f;
 }
 
 .theme-toggle input[type="radio"] {
@@ -55,6 +77,16 @@ body {
     border-radius: 8px;
     font-size: 2rem;
     text-align: right;
+}
+
+.container.light .display {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.container.dark .display {
+    background-color: #333;
+    color: #fff;
 }
 
 .display input {
@@ -87,8 +119,26 @@ button {
     cursor: pointer;
 }
 
+.container.light button {
+    background-color: #ddd;
+    color: #000;
+}
+
+.container.dark button {
+    background-color: #444;
+    color: #ddd;
+}
+
 button:hover {
     background-color: #d2cccc;
+}
+
+.container.light button:hover {
+    background-color: #ccc;
+}
+
+.container.dark button:hover {
+    background-color: #555;
 }
 
 button:active {

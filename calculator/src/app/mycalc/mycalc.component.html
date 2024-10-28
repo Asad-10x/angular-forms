@@ -6,16 +6,16 @@
   <title>Calculator</title>
 </head>
 <body>
-  <div class="container">
+  <div class="container" [ngClass]="currentTheme">
     <!-- Theme Toggle Button  -->
     <div class="theme-toggle">
       <span>Theme</span>
-      <input type="radio" id="theme1" name="theme" value="default" checked />
+      <input type="radio" id="theme1" name="theme" (change)="setTheme('default')" [checked]="currentTheme==='default'"/>
       <label for="theme1">1</label>
-      <input type="radio" id="theme2" name="theme" value="light"/>
-      <label for="theme1">2</label>
-      <input type="radio" id="theme3" name="theme" value="dark"/>
-      <label for="theme1">3</label>
+      <input type="radio" id="theme2" name="theme" (change)="setTheme('light')" [checked]="currentTheme==='light'"/>
+      <label for="theme2">2</label>
+      <input type="radio" id="theme3" name="theme" (change)="setTheme('dark')" [checked]="currentTheme==='dark'"/>
+      <label for="theme3">3</label>
     </div>
 
     <!-- Display Area for Calculator  -->
