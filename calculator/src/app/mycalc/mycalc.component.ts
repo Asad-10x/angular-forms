@@ -1,17 +1,39 @@
-import {Component, OnInit} from '@angular/core';
-import {NgClass} from '@angular/common';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {NgClass, DecimalPipe, CommonModule} from '@angular/common';
 import {FormGroup, FormControl, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-mycalc',
   standalone: true,
-  imports: [ NgClass, ReactiveFormsModule],
+  imports: [ NgClass, ReactiveFormsModule, CommonModule],
   templateUrl: './mycalc.component.html',
-  styleUrls: ['./mycalc.component.css']
+  styleUrls: ['./mycalc.component.css'],
+  providers: [DecimalPipe]
 })
 export class MycalcComponent implements OnInit{
+  // A host Listener for listening to keypress events
+  @HostListener('window:keydown', ['$event']) onKeyDown(event:any){
+    console.log(event)      // show keypress event on console
+    const allowedKeys = '0123456789.+-*/';
+
+    // The keys that corresponds to the keys of calculator are allowed and if any such key is encountered its value is taken as a button click.
+    if (allowedKeys.includes(event.key)){
+      this.onButtonClick({textContent: event.key});
+    }
+    if(event.keyCode === 13){         // return key
+      this.onCalculate();
+    }
+    if(event.keyCode === 8){          // backspace
+      this.onDelete();
+    }
+    if(event.keyCode === 67){        // c key
+      this.onReset();
+    }
+  }
+
   currentTheme: string = 'default';
   inputStr: any;
+
 
   ngOnInit():void {
     this.inputStr = new FormGroup({
@@ -29,7 +51,7 @@ export class MycalcComponent implements OnInit{
     // To check if the InputStr is currently empty?
     if(this.inputStr.controls.text.value == '0') {
       // if empty and input is a decimal-point, append a zero on left side
-      if(buttonText == '.') {
+      if(buttonText === '.' || buttonText === '+' || buttonText=== '*' || buttonText === '/') {
         this.inputStr.controls.text.setValue('0' + buttonText)
       } else {          // else set the value to button input
         this.inputStr.controls.text.setValue(buttonText);
@@ -52,6 +74,7 @@ export class MycalcComponent implements OnInit{
   onCalculate(): void {
     try {
       let result = eval(this.inputStr.controls.text.value);
+      console.log(result);
       this.inputStr.controls.text.setValue(result);
     } catch (error) {
       console.log(error);
