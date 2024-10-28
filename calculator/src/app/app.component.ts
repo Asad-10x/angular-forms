@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MycalcComponent } from './mycalc/mycalc.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MycalcComponent],
+  imports: [RouterOutlet, ReactiveFormsModule ,MycalcComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

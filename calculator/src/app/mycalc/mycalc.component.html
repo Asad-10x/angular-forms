@@ -20,32 +20,33 @@
 
     <!-- Display Area for Calculator  -->
     <div class="display">
-      <form action="">
-        <input type="text" [(ngModel)]="displayValue" readonly>
+      <form action="" [formGroup]="inputStr">
+        <input type="text" formControlName = "text">
       </form>
     </div>
 
     <!-- Buttons for calculator  -->
     <div class="button-container">
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button class="del">DEL</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>+</button>
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>-</button>
-      <button>.</button>
-      <button>0</button>
-      <button>/</button>
-      <button>x</button>
-      <button class="reset">RESET</button>
-      <button class="equal">=</button>
+      <button (click)="onButtonClick($event.target)">7</button>
+      <button (click)="onButtonClick($event.target)">8</button>
+      <button (click)="onButtonClick($event.target)">9</button>
+      <button class="del" (click)="onDelete()">DEL</button>
+      <button (click)="onButtonClick($event.target)">4</button>
+      <button (click)="onButtonClick($event.target)">5</button>
+      <button (click)="onButtonClick($event.target)">6</button>
+      <button (click)="onButtonClick($event.target)">+</button>
+      <button (click)="onButtonClick($event.target)">1</button>
+      <button (click)="onButtonClick($event.target)">2</button>
+      <button (click)="onButtonClick($event.target)">3</button>
+      <button (click)="onButtonClick($event.target)">-</button>
+      <button (click)="onButtonClick($event.target)">.</button>
+      <button (click)="onButtonClick($event.target)">0</button>
+      <button (click)="onButtonClick($event.target)">/</button>
+      <button (click)="onButtonClick($event.target)">*</button>
+      <button class="reset" (click)="onReset()">RESET</button>
+      <button class="equal" (click)="onCalculate()">=</button>
     </div>
   </div>
 </body>
 </html>
+
