@@ -1,14 +1,15 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {NgClass, DecimalPipe, CommonModule} from '@angular/common';
+import {Component, HostListener, OnInit, Pipe} from '@angular/core';
+import {NgClass,  CommonModule} from '@angular/common';
 import {FormGroup, FormControl, ReactiveFormsModule} from '@angular/forms';
+import { FormatterPipe } from '../formatter.pipe';
 
 @Component({
   selector: 'app-mycalc',
   standalone: true,
-  imports: [ NgClass, ReactiveFormsModule, CommonModule],
+  imports: [ NgClass, ReactiveFormsModule, CommonModule, FormatterPipe],
   templateUrl: './mycalc.component.html',
   styleUrls: ['./mycalc.component.css'],
-  providers: [DecimalPipe]
+  providers: [FormatterPipe]
 })
 export class MycalcComponent implements OnInit{
   // A host Listener for listening to keypress events
@@ -33,7 +34,10 @@ export class MycalcComponent implements OnInit{
 
   currentTheme: string = 'default';
   inputStr: any;
+  xvalue :any;
 
+
+  constructor(private formatterPipe: FormatterPipe) {}
 
   ngOnInit():void {
     this.inputStr = new FormGroup({
@@ -75,12 +79,14 @@ export class MycalcComponent implements OnInit{
     try {
       let result = eval(this.inputStr.controls.text.value);
       console.log(result);
-      this.inputStr.controls.text.setValue(result);
+      // this.inputStr.controls.text.setValue(result);
+      this.inputStr.controls.text.setValue(this.formatterPipe.transform(result));
+      // console.log(this.formatterPipe.transform(result));
+
     } catch (error) {
       console.log(error);
       this.inputStr.controls.text.setValue(undefined);
     }
-
   }
 
 }
