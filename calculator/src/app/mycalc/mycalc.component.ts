@@ -16,6 +16,15 @@ export class MycalcComponent implements OnInit{
   @HostListener('window:keydown', ['$event']) onKeyDown(event:any){
     console.log(event)      // show keypress event on console
     const allowedKeys = '0123456789.+-*/';
+    const unallowedKeys = '0123456789.';
+
+    // to clear previous result from the inputStr
+    if(this.calculated && unallowedKeys.includes(event.key)){
+      this.inputStr.controls.text.setValue('0');
+      this.calculated = false;
+    } else if(this.calculated && allowedKeys.includes(event.key)){
+      this.calculated = false;
+    }
 
     // The keys that corresponds to the keys of calculator are allowed and if any such key is encountered its value is taken as a button click.
     if (allowedKeys.includes(event.key)){
@@ -23,6 +32,7 @@ export class MycalcComponent implements OnInit{
     }
     if(event.keyCode === 13){         // return key
       this.onCalculate();
+
     }
     if(event.keyCode === 8){          // backspace
       this.onDelete();
@@ -34,7 +44,7 @@ export class MycalcComponent implements OnInit{
 
   currentTheme: string = 'default';
   inputStr: any;
-  xvalue :any;
+  calculated:boolean = false;     // to keep trach when the calulator is in "that" state
 
 
   constructor(private formatterPipe: FormatterPipe) {}
@@ -81,6 +91,7 @@ export class MycalcComponent implements OnInit{
       console.log(result);
       // this.inputStr.controls.text.setValue(result);
       this.inputStr.controls.text.setValue(this.formatterPipe.transform(result));
+      this.calculated = true;
       // console.log(this.formatterPipe.transform(result));
 
     } catch (error) {

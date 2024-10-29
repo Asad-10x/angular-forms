@@ -145,6 +145,7 @@ button:active {
     background-color: #c1bfb6;
 }
 
+/* Button Styles for del, reset, and equal */
 button.del {
     background-color: #647198;
     color: #fff;
@@ -166,10 +167,57 @@ button.equal:hover {
     background-color: #f96b5b;
 }
 
-button.reset:hover {
+button.reset:hover,
+button.del:hover {
     background-color: #8892b0;
 }
 
-button.del:hover {
+/* Presistent Light Theme */
+.container.light button.del {
+    background-color: #647198;
+    color: #fff;
+}
+
+.container.light button.reset {
+    background-color: #647198;
+    color: #fff;
+}
+
+.container.light button.equal {
+    background-color: #d03f2f;
+    color: #fff;
+}
+
+.container.light button.equal:hover {
+    background-color: #f96b5b;
+}
+
+.container.light button.reset:hover,
+.container.light button.del:hover {
+    background-color: #8892b0;
+}
+
+/* Presistent Styling for Dark Theme */
+.container.dark button.del {
+    background-color: #647198;
+    color: #fff;
+}
+
+.container.dark button.reset {
+    background-color: #647198;
+    color: #fff;
+}
+
+.container.dark button.equal {
+    background-color: #d03f2f;
+    color: #fff;
+}
+
+.container.dark button.equal:hover {
+    background-color: #f96b5b;
+}
+
+.container.dark button.reset:hover,
+.container.dark button.del:hover {
     background-color: #8892b0;
 }
